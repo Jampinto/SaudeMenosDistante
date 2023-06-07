@@ -9,7 +9,7 @@ namespace SaudeMenosDistante.Entities
 {
     internal class ConsultaItens
     {
-        //Atributos
+        //PROPRIEDADES DA CONSULTA DE ENFERMAGEM
         public int Id { get; set; }
         public int Peso { get; set; }
 
@@ -33,13 +33,6 @@ namespace SaudeMenosDistante.Entities
 
 
         //Construtores
-
-        public ConsultaItens()
-        {
-
-        }
-
-
 
         public ConsultaItens(int id, int peso, int altura, int glicose, char fumador, int colestrol, int pAS, int pAD)
         {
@@ -80,7 +73,7 @@ namespace SaudeMenosDistante.Entities
             Antecedentes = antecendentes;
         }
 
-
+        //MÉTODO PARA CLASSIFICAR PRESSÃO ARTERIAL
         public string VerificacaodaTensao(int pAS, int pAD)
         {
             PAS = pAS;
@@ -118,28 +111,26 @@ namespace SaudeMenosDistante.Entities
             {
                 return PressaoArterial = "Valores inválidos";
             }
-
-            
-
         }
 
+        //MÉTODOS PARA ESCREVER NA TELA 
         public override string ToString()
         {
-            if (Antecedentes != null)
+            if (Antecedentes != null)  //CONDIÇÃO CASO EXISTA ANTECEDENTES
             {
-                if (MedicacaoHabitual != null)
+                if (MedicacaoHabitual != null) //CONDIÇÃO CASO SE VERIFIQUE A TOMA DE MEDICAÇÃO PELO DO UTENTE COM ANTECEDENTES DE SAÚDE
                 {
                     return "#ENFERMARIA" + "\n" + "ID: " + Id + "\n" + "Peso(kg): " + Peso + "\n" + "Altura(cm): " + Altura + "\n" + "Glicose(mg/dL): " + Glicose + "\n" + "Colesterol(mg/dL):" + Colesterol + "\n"
                 + "Fumador: " + Fumador + "\n" + "PAS: " + PAS + "\n" + "PAD: " + PAD + "\n" + "Pressão arterial(mmHg): " + PressaoArterial + "\n" + "Antecedentes de Saúde: " + Antecedentes + "\n"
                 + "Medicação habitual: " + MedicacaoHabitual;
                 }
-                else
+                else //CONDIÇÃO CASO EXISTAM ANTECEDENTES MAS NÃO SE VERIFIQUE TOMA REGULAR DE MEDICAÇÃO PELO UTENTE
                 {
                     return "#ENFERMARIA" + "\n" + "ID: " + Id + "\n" + "Peso(kg): " + Peso + "\n" + "Altura(cm): " + Altura + "\n" + "Glicose(mg/dL): " + Glicose + "\n" + "Colesterol(mg/dL):" + Colesterol + "\n"
                 + "Fumador: " + Fumador + "\n" + "PAS: " + PAS + "\n" + "PAD: " + PAD + "\n" + "Pressão arterial(mmHg): " + PressaoArterial + "\n" + "Antecedentes de Saúde: " + Antecedentes;
                 }
             }
-            else
+            else //CASO NÃO HAJA ANTECEDENTES NEM A TOMA DE MEDICAÇÃO PELO UTENTE
             {
                 return "#ENFERMARIA" + "\n" + "ID: " + Id + "\n" + "Peso(kg): " + Peso + "\n" + "Altura(cm): " + Altura + "\n" + "Glicose(mg/dL): " + Glicose + "\n" + "Colesterol(mg/dL):" + Colesterol + "\n"
                 + "Fumador: " + Fumador + "\n" + "PAS: " + PAS + "\n" + "PAD: " + PAD + "\n" + "Pressão arterial(mmHg): " + PressaoArterial;

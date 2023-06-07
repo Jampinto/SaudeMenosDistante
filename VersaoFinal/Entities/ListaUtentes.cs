@@ -12,7 +12,7 @@ namespace SaudeMenosDistante.Entities
         List<Utente> ListaDeutentes;
 
 
-        // MÉTODOS
+        // INSTANCIAÇÃO DE LISTA DE UTENTES
         public ListaUtentes() 
         {
             ListaDeutentes = new List<Utente>();

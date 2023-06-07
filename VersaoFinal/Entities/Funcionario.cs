@@ -30,15 +30,13 @@ namespace SaudeMenosDistante.Entities
             Equipa = equipa;
         }
 
-
-
         //MÉTODOS
-        public Conta ObterConta() // CONTA FUNCIONÁRIO
+        public Conta ObterConta() //CONTA FUNCIONÁRIO
         {
             return Registo;
         }
 
-        public void Registar(string username, string password) // REGISTAR FUNCIONÁRIO
+        public void Registar(string username, string password) // REGISTAR CONTA DE ACESSO FUNCIONÁRIO
         {
             Registo = new Conta(username, password);
         }

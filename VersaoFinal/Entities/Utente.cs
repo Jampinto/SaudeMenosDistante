@@ -13,7 +13,7 @@ namespace SaudeMenosDistante.Entities
         public int Nutente { get; set; }
 
 
-        // MÉTODOS
+        // CONSTRUTORES
 
         public Utente(string nome, DateTime datanascimento, string morada, char sexo, string email, int nutente)
     : base(nome, datanascimento, morada, sexo, email)
@@ -22,6 +22,7 @@ namespace SaudeMenosDistante.Entities
         }
 
 
+        //MÉTODOS
         public override string ToString()
         {
 

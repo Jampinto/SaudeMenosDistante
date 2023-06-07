@@ -22,11 +22,6 @@ namespace SaudeMenosDistante.Entities
 
         public double Litros { get; set; }
 
-
-        //List<RegistoViatura> Registos { get; set; } = new List<RegistoViatura>();
-
-
-
         // CONSTRUTORES
 
         public RegistoViatura(DateTime dataregisto, string matricula, double kmchegada, double kmsaida)
@@ -46,17 +41,9 @@ namespace SaudeMenosDistante.Entities
             KmAbastecer = kmabastecer;
             Litros = litros;
         }
-        /*
-        public void AdicionarRegisto(RegistoViatura registo)
-        {
-            Registos.Add(registo);
-        }
-        */
-
-
 
         //MÉTODOS
-        public double RegistoDiário() // REGISTO KMS
+        public double RegistoDiário() //CALCULO DE KM'S PERCORRIDOS
         {
             return KmSaida - KmChegada;
         }

@@ -22,7 +22,6 @@ namespace SaudeMenosDistante
             List<ConsultasMedicas> listaConsultasMedicas = new List<ConsultasMedicas>();
 
 
-
             // INTRODUÇÃO DE DADOS FUNCIONARIOS
             Funcionario administrativo = new Funcionario("Feliciano Gomes", DateTime.Parse("31/07/1966"), "Rua das Camélias, Vila Real", Char.Parse("M"), "feliciano.gomes@smd.pt", "Administrativo", 900, "Equipa1"); listaFuncionarios.Add(administrativo);
             Funcionario motorista = new Funcionario("Helena Silva", DateTime.Parse("20/03/1970"), "Rua Bonsanto, Lisboa", Char.Parse("F"), "helena.silva@exemplo.pt", "Motorista", 800.00, "Equipa1"); listaFuncionarios.Add(motorista);
@@ -36,31 +35,32 @@ namespace SaudeMenosDistante
             Funcionario gestorDgs2 = new Funcionario("Maria Santos", DateTime.Parse("20/05/1988"), "Rua do Pinheiro Manso, Fafe", Char.Parse("F"), "isabel.santos@exemplo.pt", "Gestor", 1600, "Equipa2"); listaFuncionarios.Add(gestorDgs2);
 
 
-
             //INTRODUÇÃO DADOS EQUIPAMENTOS/VIATURAS
             Frota viatura = new Frota("Viatura", "Ambulância", 1, "Mercedes", "45-GG-87", DateTime.Parse("25/11/2023"), DateTime.Parse("20/10/2024"), 4548166);
             Frota viatura2 = new Frota("Viatura", "Ambulância de emergência", 1, "Volvo", "75-OH-60", DateTime.Parse("16/05/2010"), DateTime.Parse("20/04/2024"), 123467);
             viatura.AdicionarViatura(viatura);
             viatura2.AdicionarViatura(viatura2);
 
-            //INTRODUÇÃO DADOS EQUIPAMENTOS DE SERVIÇOS (CONSULTAS, ENFERMAGEM, INFORMÁTICA)
-            EquipamentoDeServico equipamento1 = new EquipamentoDeServico("Computador", "Laptop", 4, DateTime.Parse("29/03/2023"), 1, "HP", "Informático"); //listaEquipamentos.AdicionarEquipamento(equipamento1);
-            EquipamentoDeServico equipamento2 = new EquipamentoDeServico("Impressora", "Multifunções", 1, DateTime.Parse("01/04/2023"), 2, "Epson", "Informático"); //listaEquipamentos.AdicionarEquipamento(equipamento2);
-            EquipamentoDeServico equipamento3 = new EquipamentoDeServico("Router", "Internet Móvel", 1, DateTime.Parse("26/04/2023"), 3, "Vodafone", "Informático"); //listaEquipamentos.AdicionarEquipamento(equipamento3);
-            EquipamentoDeServico equipamento4 = new EquipamentoDeServico("Estetoscópio", "Estetoscópio profissional", 4, DateTime.Parse("05/05/2023"), 4, "Littmann", "Médico"); //listaEquipamentos.AdicionarEquipamento(equipamento4);
-            EquipamentoDeServico equipamento5 = new EquipamentoDeServico("Tiras de Avaliação", "Tiras de avaliação de colesterol e glicose", 200, DateTime.Parse("05/05/2023"), 5, "Accu-Check", "Médico"); //listaEquipamentos.AdicionarEquipamento(equipamento5);
 
+            //INTRODUÇÃO DADOS EQUIPAMENTOS DE SERVIÇOS (CONSULTAS, ENFERMAGEM, INFORMÁTICA)
+            EquipamentoDeServico equipamento1 = new EquipamentoDeServico("Computador", "Laptop", 4, DateTime.Parse("29/03/2023"), 1, "HP", "Informático");
+            EquipamentoDeServico equipamento2 = new EquipamentoDeServico("Impressora", "Multifunções", 1, DateTime.Parse("01/04/2023"), 2, "Epson", "Informático");
+            EquipamentoDeServico equipamento3 = new EquipamentoDeServico("Router", "Internet Móvel", 1, DateTime.Parse("26/04/2023"), 3, "Vodafone", "Informático");
+            EquipamentoDeServico equipamento4 = new EquipamentoDeServico("Estetoscópio", "Estetoscópio profissional", 4, DateTime.Parse("05/05/2023"), 4, "Littmann", "Médico");
+            EquipamentoDeServico equipamento5 = new EquipamentoDeServico("Tiras de Avaliação", "Tiras de avaliação de colesterol e glicose", 200, DateTime.Parse("05/05/2023"), 5, "Accu-Check", "Médico");
             listaEquipamentos.Add(equipamento1);
             listaEquipamentos.Add(equipamento2);
             listaEquipamentos.Add(equipamento3);
             listaEquipamentos.Add(equipamento4);
             listaEquipamentos.Add(equipamento5);
 
+
             // EQUIPAS
             Equipas equipa1 = new Equipas("Equipa1", "Amares");
             Equipas equipa2 = new Equipas("Equipa2", "Vila Verde");
             listaEquipas.Add(equipa1);
             listaEquipas.Add(equipa2);
+
 
             //LOGIN
             administrativo.Registar("adm", "smd"); //LOGIN ADMINISTRATIVO
@@ -73,6 +73,7 @@ namespace SaudeMenosDistante
             enfermeiro2.Registar("enf_02", "smd"); //LOGIN ENFERMEIRO
             medico2.Registar("med_02", "smd"); //LOGIN MÉDICO
             gestorDgs2.Registar("ges_02", "smd"); //LOGIN GESTOR DGS
+
 
             /*
             // INTRODUÇÃO DADOS UTENTES
@@ -105,32 +106,36 @@ namespace SaudeMenosDistante
             listaConsultas.Adicionar(consulta7);
             */
 
+
             Console.WriteLine("Bem-vindo ao Saúde Menos Distante");
             Console.WriteLine("----------------------------------");
+            Console.WriteLine();
 
-            Funcionario funconline = new Funcionario();
+            Funcionario funconline = new Funcionario();  // INSTANCIAÇÃO DE FUNCIONARIO PARA CRUZAR COM OS PARAMETROS DO LOGIN DE CADA FUNCIONARIO
 
-            bool terminar = false;
-            bool loggedIn = false;
+            bool terminar = false;  //VARIAVEL PARA TERMINAR O PROGRAMA
+            bool loggedIn = false;  //VARIAVEL PARA TERMINAR LOGIN
 
+            //CONDIÇÃO PARA FECHAR PROGRAMA
             while (!terminar)
             {
 
 
-
+                //CONDIÇÃO PARA O LOGIN
                 while (!loggedIn)
                 {
-                    Console.Write("Login: ");
+                    Console.WriteLine("*|LOGIN|*");
+                    Console.Write("Username: ");
                     string username = Console.ReadLine();
 
                     Console.Write("Password: ");
                     string password = Console.ReadLine();
 
-                    funconline = listaFuncionarios.Find(x => x.ObterConta().ObterUsername() == username);
+                    funconline = listaFuncionarios.Find(x => x.ObterConta().ObterUsername() == username); //FIND UTILIZADO NA LISTA DE FUNCIONARIOS PARA OBTER O USERNAME DO FUNCIONARIO E OS DADOS DE REGISTO DE CONTA 
 
                     if (funconline != null)
                     {
-                        loggedIn = funconline.Login(username, password);
+                        loggedIn = funconline.Login(username, password);  //CONDIÇÃO PARA INTRODUÇÃO CORRETA DOS DADOS DO LOGIN
                     }
                     else
                     {
@@ -140,12 +145,11 @@ namespace SaudeMenosDistante
 
                 }
 
-
-                /************* Fim do Login **************/
+                //ENTRADA PARA O MENU RESPECTIVO À FUNCAO DE CADA LOGIN
                 while (loggedIn)
                 {
 
-                    string menu = funconline.Funcao;
+                    string menu = funconline.Funcao;  //ATRIBUIÇÃO À VARIÁVEL MENU A FUNÇÃO RESPECTIVA DE CADA FUNCIONARIO
 
                     switch (menu)
                     {
@@ -179,9 +183,10 @@ namespace SaudeMenosDistante
                 }
             }
 
+            //MENU MOTORISTA
             void Motorista()
             {
-                
+
                 Console.WriteLine("Selecione a opção: \n 1) Registo diário viatura \n 2) Logout \n 3) Sair do Programa");
 
                 string mot = Console.ReadLine();
@@ -192,9 +197,9 @@ namespace SaudeMenosDistante
                         Registo();
                         break;
                     case "2":
-                        Console.WriteLine("Logout");                         
-                        loggedIn = false;                                    
-                        break;                                                 
+                        Console.WriteLine("Logout");
+                        loggedIn = false;
+                        break;
                     case "3":
                         Console.WriteLine("Programa encerrado");
                         loggedIn = false;
@@ -207,8 +212,7 @@ namespace SaudeMenosDistante
                 }
             }
 
-            
-
+            //REGISTO DE DIÁRIO DE OCORRÊNCIAS DAS VIATURAS PELO MOTORISTA
             void Registo()
             {
                 Console.WriteLine("Introduza a data (DD/MM/YYYY): ");
@@ -224,36 +228,35 @@ namespace SaudeMenosDistante
                 Console.WriteLine("Abasteceu combustível na viatura? (S/N)");
 
                 char resp = Char.Parse(Console.ReadLine());
-                if (resp == 's' || resp == 'S')
+                if (resp == 's' || resp == 'S')   //CONDIÇÃO PARA CASO DE ABASTECIMENTO DE COMBUSTIVEL
                 {
                     Console.WriteLine("Introduza os kms ao abastecer: ");
                     double kmabastecimento = double.Parse(Console.ReadLine());
                     Console.WriteLine("Introduza os litros de abastecimento");
                     double litros = double.Parse(Console.ReadLine());
                     RegistoViatura registoTotal = new RegistoViatura(dataregisto, matricula, kmsaida, kmchegada, kmabastecimento, litros);
-                    viatura.AdicionarItem(registoTotal);
+
+                    viatura.AdicionarItem(registoTotal);  //ADICIONAR O REGISTO DIÁRIO À LISTA DE VIATURAS
 
                     Console.WriteLine(registoTotal);
-
-
                 }
-                else
+                else  //CASO CONTRÁRIO EFETUA APENAS O REGISTO DIÁRIO
                 {
                     RegistoViatura registoDiario = new RegistoViatura(dataregisto, matricula, kmsaida, kmchegada);
-                    viatura.AdicionarItem(registoDiario);
+
+                    viatura.AdicionarItem(registoDiario); //ADICIONAR O REGISTO DIÁRIO À LISTA DE VIATURAS
 
                     Console.WriteLine(registoDiario);
-
                 }
                 Console.WriteLine();
                 Console.WriteLine("FECHO DIÁRIO");
-
             }
 
-            // MENUS ADMINISTRATIVO
+
+            // MENU ADMINISTRATIVO
             void Administrativo()
             {
-                
+
                 Console.WriteLine("Seleciona a opção: \n 1) Registar Utente \n 2) Registar Consulta \n 3) Visualizar Utentes \n 4) Informação estatística \n 5) Gestão de Equipamento \n 6) Logout \n 7) Encerrar programa");
 
                 string adm = Console.ReadLine();
@@ -264,7 +267,7 @@ namespace SaudeMenosDistante
                         RegistarUtente();
                         break;
                     case "2":
-                        RegistarConsulta();                                       
+                        RegistarConsulta();
                         break;
                     case "3":
                         VisualizarUtente();
@@ -276,9 +279,9 @@ namespace SaudeMenosDistante
                         GestaoEquipamento();
                         break;
                     case "6":
-                        Console.WriteLine("Logout");                         
-                        loggedIn = false;                                    
-                        break;                                                
+                        Console.WriteLine("Logout");
+                        loggedIn = false;
+                        break;
                     case "7":
                         Console.WriteLine("Programa encerrado");
                         loggedIn = false;
@@ -288,31 +291,30 @@ namespace SaudeMenosDistante
                         Console.WriteLine("Opção inválida");
                         break;
                 }
-
-
             }
 
+            //RELATÓRIO DAS EQUIPAS PELO GESTOR DGS
             void GestaoEquipas()
             {
                 Console.WriteLine("Gestão de Equipas");
                 foreach (Equipas equipa in listaEquipas)
-                {
-                    Console.WriteLine(equipa);
-                    foreach (Funcionario funcionario in listaFuncionarios)
-                    {                      
+                {                                                                           //FOREACH DAS EQUIPAS NA LISTA DE EQUIPAS
+                    Console.WriteLine(equipa);                                              //COM FOREACH DOS FUNCIONARIO NA LISTA DE FUNCIONARIOS   
+                    foreach (Funcionario funcionario in listaFuncionarios)                  //PARA IMPRIMIR RELATORIO DOS FUNCIONARIOS POR EQUIPAS
+                    {
                         if (funcionario.Equipa == equipa.NomeEquipa)
                         {
                             Console.WriteLine(funcionario);
                         }
                     }
                 }
-
             }
 
-
-
+            //ENTRADA DO UTENTE PELO ADMINISTRATIVO
             void RegistarUtente()
             {
+                //INSTANCIAÇÃO DO UTENTE PELO UTILIZADOR
+
                 Console.WriteLine("#Entrada de utente: ");
                 Console.WriteLine("Nome de utente: ");
                 string nome = Console.ReadLine();
@@ -339,25 +341,27 @@ namespace SaudeMenosDistante
 
                 listaUtentes.Adicionar(utente);
 
-                Console.WriteLine("Inserido");
-
+                Console.WriteLine("UTENTE INSERIDO.");
             }
 
+            //REGISTOS DAS CONSULTAS PELO ADMINISTRATIVO
             void RegistarConsulta()
             {
+                //INSTANCIAÇÃO DA CONSULTA PELO ADMINISTRATIVO 
+
                 EstadoConsulta estado = Enum.Parse<EstadoConsulta>("Entrada");
                 DateTime moment = DateTime.Now;
                 Console.WriteLine("Número de utente:");
                 int nutente = int.Parse(Console.ReadLine());
-                Utente utente = listaUtentes.obterListaDeutentes().Find(x => x.Nutente == nutente);
+                Utente utente = listaUtentes.obterListaDeutentes().Find(x => x.Nutente == nutente); //ATRAVÉS DA LIGAÇÃO AO UTENTE ANTERIORMENTE INSERIDO
                 int id = listaConsultas.ObterListaDeConsultas().Count();
-                Consulta consulta = new Consulta(id + 1, moment, estado, utente);
+                Consulta consulta = new Consulta(id + 1, moment, estado, utente);  //INICIAÇÃO DA VARIÁVEL ID NA POSIÇÃO Nr. 1
                 listaConsultas.Adicionar(consulta);
-                Console.WriteLine("ID: " + consulta.Id);
 
+                Console.WriteLine();
                 Console.WriteLine(consulta.Estado);
-                Console.WriteLine("Consulta registada.");
-               
+                Console.WriteLine("ID: " + consulta.Id);
+                Console.WriteLine("CONSULTA REGISTADA.");
             }
 
 
@@ -388,6 +392,8 @@ namespace SaudeMenosDistante
                 }
 
             }
+
+
             // ALTERAR QUANTIDADES EQUIPAMENTOS
             void RemoverStock()
             {
@@ -399,7 +405,7 @@ namespace SaudeMenosDistante
 
                     y = int.Parse(Console.ReadLine());
 
-                    if (y < 0 || y > 4)
+                    if (y < 0 || y > 4)   //CONDIÇÃO PARA AS RESPOSTAS DO UTILIZADOR
                     {
                         Console.WriteLine("Resposta inválida");
                     }
@@ -414,19 +420,19 @@ namespace SaudeMenosDistante
                     Console.WriteLine("Que quantidade quer remover? ");
                     int x = int.Parse(Console.ReadLine());
 
-                    if (x > listaEquipamentos[y].Quantidade)
+                    if (x > listaEquipamentos[y].Quantidade)  //CONDIÇÃO PARA NÃO DEIXAR REMOVER QUANTIDADES SUPERIORES ÀS EXISTENTES
                     {
                         Console.WriteLine("Não é possível remover as quantidades indicadas.");
                     }
                     else
                     {
-                        listaEquipamentos[y].Quantidade -= x;
+                        listaEquipamentos[y].Quantidade -= x;  //INCREMENTAR QUANTIDADES
                         break;
                     }
 
                 }
 
-
+                //VISUALIZAR LISTA DE EQUIPAMENTOS
                 foreach (EquipamentoDeServico equipamento in listaEquipamentos)
                 {
 
@@ -436,6 +442,7 @@ namespace SaudeMenosDistante
 
             }
 
+            //INTRODUZIR QUANTIDADES DE STOCK DE EQUIPAMENTOS PELOS ADMNISTRATIVO
             void IntroduzirStock()
             {
 
@@ -446,7 +453,7 @@ namespace SaudeMenosDistante
 
                     y = int.Parse(Console.ReadLine());
 
-                    if (y < 0 || y > 4)
+                    if (y < 0 || y > 4) //CONDIÇÃO PARA RESPOSTA DO UTILIZADOR
                     {
                         Console.WriteLine("Resposta inválida");
                     }
@@ -455,21 +462,19 @@ namespace SaudeMenosDistante
                         break;
                     }
                 }
-
                 Console.WriteLine("Que quantidade quer introduzir? ");
                 int x = int.Parse(Console.ReadLine());
-                listaEquipamentos[y].Quantidade += x;
+                listaEquipamentos[y].Quantidade += x;    //INCREMENTO DE QUANTIDADES A UM DOS PRODUTOS SELECIONADOS DESCRITOS NA TELA
 
+                //VISUALIZAR ATULIZAÇÃO ÀS QUANTIDADES NOS EQUIPAMENTOS
                 foreach (EquipamentoDeServico equipamento in listaEquipamentos)
                 {
-
                     Console.WriteLine(equipamento);
-
                 }
 
             }
 
-            // ADICIONAR EQUIPAMENTOS
+            // ADICIONAR EQUIPAMENTOS NOVOS PELO ADMINISTRATIVO
             void Adicionar()
             {
 
@@ -503,7 +508,7 @@ namespace SaudeMenosDistante
             }
 
 
-
+            //VISUALIZAR EQUIPAMENTOS PELO ADMNISTRATIVO
             void VisualizarEquip()
             {
 
@@ -516,20 +521,18 @@ namespace SaudeMenosDistante
 
             }
 
+            //VISUALIZAR UTENTES PELO ADMINISTRATIVO
             void VisualizarUtente()
             {
                 foreach (Utente utente in listaUtentes.obterListaDeutentes())
                 {
-
                     Console.WriteLine(utente);
-
                 }
-
             }
 
+            //MENU ENFERMEIRO
             void Enfermeiro()
             {
-                
                 Console.WriteLine("Seleciona a opção: \n 1) Consultas \n 2) Visualizar Consultas \n 3) Informação estatística \n 4) Logout \n 5) Sair do Programa");
 
                 string enf = Console.ReadLine();
@@ -560,12 +563,13 @@ namespace SaudeMenosDistante
                 }
             }
 
+            //REGISTO DE CONSULTAS DE ENFERMAGEM PELO ENFERMEIRO
             void Consultas()
             {
                 EstadoConsulta estado = Enum.Parse<EstadoConsulta>("Enfermagem");
                 Console.WriteLine(estado);
 
-                int id = listaConsultas.ObterListaDeConsultas().Count();
+                int id = listaConsultas.ObterListaDeConsultas().Count();  //CONTAGEM PARA LIGAR AO ID DA CONSULTA INICIADA PELO ADMINISTRATIVO
 
                 Console.WriteLine("Peso(kg): ");
                 int peso = int.Parse(Console.ReadLine());
@@ -578,7 +582,7 @@ namespace SaudeMenosDistante
 
                 Console.WriteLine("Fumador(S/N): ");
                 char fumador = char.Parse(Console.ReadLine());
-                if (fumador != 'S' & fumador != 'N' & fumador != 's' & fumador != 'n')
+                if (fumador != 'S' & fumador != 'N' & fumador != 's' & fumador != 'n')  //CONDIÇÃO PARA LIMITAR RESPOSTA POR PARTE DO UTILIZADOR
                 {
                     Console.WriteLine("Resposta inválida");
                 }
@@ -598,13 +602,16 @@ namespace SaudeMenosDistante
                 Console.WriteLine("Tem algum antecedente de saúde(S/N) ? ");
                 char resp = char.Parse(Console.ReadLine());
 
-                if (resp == 's' || resp == 'S') 
+                //VARIEDADE DE CONSTRUTORES DOS ITENS DA CONSULTA MEDIANTE DIFERENTES RESPOSTAS DE
+                //ANTECEDENTES DE SAUDE E MEDICAÇÃO HABITUAL
+
+                if (resp == 's' || resp == 'S')
                 {
                     Console.WriteLine("Indique os antecedentes de saúde ? ");
                     string antecedentes = Console.ReadLine();
                     Console.WriteLine("Toma alguma medicação habitual(S/N) ?");
                     char res = char.Parse(Console.ReadLine());
-                    if (res == 'S' || res == 's') 
+                    if (res == 'S' || res == 's')
                     {
                         Console.WriteLine("Qual a medicação habitual? ");
                         string medicacao = Console.ReadLine();
@@ -612,14 +619,14 @@ namespace SaudeMenosDistante
                         ConsultaItens consultaItens = new ConsultaItens(id, peso, altura, glicose, fumador, colesterol, pAS, pAD, antecedentes, medicacao);
                         listaConsultasItens.Adicionar(consultaItens);
                         consultaItens.VerificacaodaTensao(pAS, pAD);
-                        
+
                     }
                     else
                     {
                         ConsultaItens consultaItens = new ConsultaItens(id, peso, altura, glicose, fumador, colesterol, pAS, pAD, antecedentes);
                         listaConsultasItens.Adicionar(consultaItens);
                         consultaItens.VerificacaodaTensao(pAS, pAD);
-                        
+
                     }
                 }
                 else
@@ -627,13 +634,15 @@ namespace SaudeMenosDistante
                     ConsultaItens consultaItens = new ConsultaItens(id, peso, altura, glicose, fumador, colesterol, pAS, pAD);
                     listaConsultasItens.Adicionar(consultaItens);
                     consultaItens.VerificacaodaTensao(pAS, pAD);
-                    
+
                 }
                 Console.WriteLine();
                 Console.WriteLine("Consulta inserida!");
 
             }
 
+
+            //VISUALIZAR CONSULTAS PELO ENFERMEIRO E MÉDICO
             void VisualizarConsultas()
             {
                 foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
@@ -652,9 +661,10 @@ namespace SaudeMenosDistante
 
             }
 
+
+            //MENU DO MÉDICO
             void Medico()
             {
-                
                 Console.WriteLine("Seleciona a opção: \n 1) Visualizar consulta de enfermagem \n 2) Prescrever terapeutica \n 3) Relatório do Rastreio \n 4) Estatísticas \n 5) Logout \n 6) Sair do programa");
 
                 string med = Console.ReadLine();
@@ -662,21 +672,21 @@ namespace SaudeMenosDistante
                 switch (med)
                 {
                     case "1":
-                        Visualizarconsultaenf();
+                        VisualizarConsultas();
                         break;
                     case "2":
                         PrescricaoMedica();
                         break;
                     case "3":
-                        RelatorioRastreio(); 
+                        RelatorioRastreio();
                         break;
                     case "4":
                         Estatisticas();
                         break;
                     case "5":
-                        Console.WriteLine("Logout");                         
-                        loggedIn = false;                                    
-                        break;                                                
+                        Console.WriteLine("Logout");
+                        loggedIn = false;
+                        break;
                     case "6":
                         Console.WriteLine("Programa encerrado");
                         loggedIn = false;
@@ -688,32 +698,16 @@ namespace SaudeMenosDistante
                 }
             }
 
-            void Visualizarconsultaenf()
-            {
-                foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
-                {
-
-                    Console.WriteLine(consulta);
-
-                }
-
-                foreach (ConsultaItens consulta in listaConsultasItens.ObterListaDeConsultasItens())
-                {
-
-                    Console.WriteLine(consulta);
-
-                }
-
-            }
-
+            //REGISTO DA CONSULTA DE MÉDICA
             void PrescricaoMedica()
             {
-
-
-                Console.WriteLine("Consultas Médico");
-                Console.WriteLine("Prescrição terapêutica(S/N) ? ");
+                EstadoConsulta estado = Enum.Parse<EstadoConsulta>("Médico");
+                Console.WriteLine(estado);
+                Console.WriteLine();
+                Console.WriteLine("Deseja realizar prescrição terapêutica(S/N) ? ");
                 char resp = char.Parse(Console.ReadLine());
 
+                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS À VARIAVEL char resp
                 if (resp == 'S' || resp == 's')
                 {
                     Console.WriteLine("Nome do medicamento: ");
@@ -725,9 +719,7 @@ namespace SaudeMenosDistante
                     int id = listaConsultas.ObterListaDeConsultas().Count();
                     ConsultasMedicas consulta = new ConsultasMedicas(id, medicamento, dose, alturadoDia);
                     listaConsultasMedicas.Add(consulta);
-                    
                 }
-
                 else
                 {
                     Console.WriteLine("Recomendações: ");
@@ -735,62 +727,42 @@ namespace SaudeMenosDistante
                     int id = listaConsultas.ObterListaDeConsultas().Count();
                     ConsultasMedicas consulta = new ConsultasMedicas(id, recomendacao);
                     listaConsultasMedicas.Add(consulta);
-                    
                 }
                 Console.WriteLine();
                 Console.WriteLine("Consulta médica terminada!");
+                Console.WriteLine();
                 Console.WriteLine("FIM DO RASTREIO");
+                Console.WriteLine();
 
             }
 
+            //RELATORIO FINAL DO RASTREIO PRESENTE NO MENU DO MÉDICO
             void RelatorioRastreio()
             {
-                /*
-                foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
-                {
-
-                    Console.WriteLine(consulta);
-
-                }
-
-                foreach (ConsultaItens consulta in listaConsultasItens.ObterListaDeConsultasItens())
-                {
-
-                    Console.WriteLine(consulta);
-
-                }
-                foreach (ConsultasMedicas consulta in listaConsultasMedicas)
-                {
-                    Console.WriteLine(consulta);
-                }
-                */
-
-
                 Console.WriteLine("RELATÓRIO DO RASTREIO");
+                //CRUZAMENTO DOS "ids" DA LISTA DE CONSULTAS PRODUZIDAS PELO ADMINISTRATIVO
                 foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
                 {
-                    
+                    //DA LISTA DAS CONSULTAS DE ENFERMAGEM PRODUZIDAS PELO ENFERMEIRO
                     foreach (ConsultaItens itens in listaConsultasItens.ObterListaDeConsultasItens())
                     {
-                        
+                        //DA LISTA DA CONSULTAS MÉDICAS PRODUZIDAS PELO MÉDICO
                         foreach (ConsultasMedicas consulmed in listaConsultasMedicas)
                         {
-
                             if (consulta.Id == itens.Id && consulta.Id == consulmed.Id && itens.Id == consulmed.Id)
                             {
                                 Console.WriteLine($"Relatório do Rastreio: \n {consulta} \n {itens} \n {consulmed}");
                             }
-
                         }
-           
+
                     }
                 }
             }
 
 
+            //MENU DO GESTOR DA DGS
             void Gestor()
             {
-                Console.WriteLine("Menu Gestor DGS");
                 Console.WriteLine("Seleciona a opção: \n 1) Relatório de equipas \n 2) Informação estatística \n 3) Logout \n 4) Sair do Programa");
 
                 string ges = Console.ReadLine();
@@ -804,9 +776,9 @@ namespace SaudeMenosDistante
                         Estatisticas();
                         break;
                     case "3":
-                        Console.WriteLine("Logout");                         
-                        loggedIn = false;                                    
-                        break;                                                 
+                        Console.WriteLine("Logout");
+                        loggedIn = false;
+                        break;
                     case "4":
                         Console.WriteLine("Programa encerrado");
                         loggedIn = false;
@@ -819,8 +791,9 @@ namespace SaudeMenosDistante
 
             }
 
+            //ESTATÍTICAS ACESSÍVEIS AO ADMNISTRATIVO, MÉDICO, ENFERMEIRO E GESTOR DA DGS
             void Estatisticas()
-            {   
+            {
                 // Escreve o número total de consultas usando a função Count
                 Console.WriteLine("Contagem total de consulta: " + listaConsultas.ObterListaDeConsultas().Count());
                 // Obtêm a última consulta, ordenando as consultas por data
@@ -828,17 +801,17 @@ namespace SaudeMenosDistante
                 // Cria o dado ultima_data a partir dos dados da ultimaConsulta obtida pelo anterior
                 DateTime ultima_data = new DateTime(ultimaConsulta.Moment.Year, ultimaConsulta.Moment.Month, ultimaConsulta.Moment.Day);
                 Console.WriteLine("Última consulta: " + ultima_data.ToString("dd/MM/yyyy"));
-                
+
                 int contador = 0; // Esta variável conta as consultas do último dia
                 int contador_semana = 0;  // Esta variável conta as consultas dos últimos  7 dias
 
                 // Ínicio da contagem das consultas do último dia
-                foreach(Consulta consulta in listaConsultas.ObterListaDeConsultas())
+                foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
                 {
                     //Uso o ToString("dd/MM/yyyy") que  é para a hora e os minutos não entrar na comparação
                     if (consulta.Moment.ToString("dd/MM/yyyy") == ultima_data.ToString("dd/MM/yyyy"))
                     {
-                        contador += 1; 
+                        contador += 1;
                     }
                 }
                 // Fim da contagem das consultas do último dia

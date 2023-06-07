@@ -11,11 +11,13 @@ namespace SaudeMenosDistante.Entities
         List<ConsultaItens> ListaDeConsultasItens;
 
 
+        //INSTANCIAÇÃO DE LISTA DE CONSULTAS ITENS
         public ListaConsultasItens()
         {
             ListaDeConsultasItens = new List<ConsultaItens>();
         }
 
+        //MÉTODOS
         public List<ConsultaItens> ObterListaDeConsultasItens()
         {
             return ListaDeConsultasItens;

@@ -35,7 +35,7 @@ namespace SaudeMenosDistante.Entities
 
 
         //MÉTODOS
-        public void AdicionarItem (RegistoViatura item) // ADICIONAR ITEMS À VIATURA
+        public void AdicionarItem (RegistoViatura item) // ADICIONAR REGISTOS DIÁRIOS À VIATURA
         {
             listaregistos.Add(item);
         }

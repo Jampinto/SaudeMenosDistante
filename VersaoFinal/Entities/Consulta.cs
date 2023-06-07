@@ -9,17 +9,14 @@ namespace SaudeMenosDistante.Entities
 {
     internal class Consulta
     {
+        //PROPRIEDADES
         public int Id { get; set; }
         public DateTime Moment { get; set; }
         public EstadoConsulta Estado { get; set; }
         public Utente Utente { get; set; }
 
         // Construtores
-        public Consulta()
-        {
-        }
-
-        public Consulta(int id, DateTime moment, EstadoConsulta estado, Utente utente) // Ao criar o construtor não se cria com a lista
+        public Consulta(int id, DateTime moment, EstadoConsulta estado, Utente utente) 
         {
             Id = id;
             Moment = moment;
@@ -28,7 +25,6 @@ namespace SaudeMenosDistante.Entities
         }
 
         // Métodos
-
         public override string ToString()
         {
 

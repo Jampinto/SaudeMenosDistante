@@ -12,6 +12,5 @@ namespace SaudeMenosDistante.Entities.Enum
         Entrada = 1,
         Enfermagem = 2,
         Médico = 3,
-        Concluído = 4
     }
 }

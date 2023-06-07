@@ -8,6 +8,7 @@ namespace SaudeMenosDistante.Entities
 {
     internal class ConsultasMedicas
     {
+        //PROPRIEDADES
         public int Id { get; set; }
         public string Recomendacao { get; set; }
 
@@ -15,8 +16,7 @@ namespace SaudeMenosDistante.Entities
 
         public string Periodicidade { get; set; }
 
-
-
+        //CONSTRUTORES
         public ConsultasMedicas(int id, string recomendacao)
         {
             Id = id;
@@ -34,11 +34,11 @@ namespace SaudeMenosDistante.Entities
         public override string ToString()
         {
             
-            if (Dosagem == null) 
+            if (Dosagem == null) //CONDIÇÃO CASO NÃO SE VERIFIQUE A NECESSIDADE DE PRESCRIÇÃO TERAPÊUTICA
             {
                 return "#MEDICINA" + "\n" + "ID: " + Id + "\n" + "Recomendação: " + Recomendacao;
             }
-            else
+            else //CONDIÇÃO CASO SE VERIFIQUE NECESSIDADE DE PRESCRIÇÃO TERAPÊUTICA
             {
                 return "#MEDICINA" + "\n" + "ID: " + Id + "\n" + "Recomendação: " + Recomendacao + "\n"
                 + "Dosagem: " + Dosagem + "\n"

@@ -22,10 +22,7 @@ namespace SaudeMenosDistante.Entities
 
 
 
-        // CONSTRUTORES
-        public Pessoa()
-        {
-        }
+        // CONSTRUTOR
 
         public Pessoa(string nome, DateTime datanascimento, string morada, char sexo, string email)
         {

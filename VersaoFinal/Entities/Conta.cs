@@ -23,12 +23,12 @@ namespace SaudeMenosDistante.Entities
 
 
         //MÉTODOS
-        public string ObterUsername() //USERNAME
+        public string ObterUsername() //OBTER USERNAME DA CONTA DE ACESSO AO PROGRAMA 
         {
             return Username;
         }
 
-        public bool login(string username, string password) // USERNAME + PASSWORD
+        public bool login(string username, string password) //CONDIÇÃO PARA LOGIN DA CONTA INDIVIDUAL DE CADA FUNCIONARIO
         {
             return username == Username && password == Password;
         }

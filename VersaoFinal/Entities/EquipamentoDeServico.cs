@@ -14,8 +14,6 @@ namespace SaudeMenosDistante.Entities
         public string Fabricante { get; set; }
         public string Tipo { get; set; }
 
-        List<EquipamentoDeServico> Equipamentos { get; set; } = new List<EquipamentoDeServico>();
-
 
         //CONSTRUTOR
         public EquipamentoDeServico(string artigo, string descritivo, int quantidade, DateTime dataCompra, int referencia, string fabricante, string tipo)
@@ -27,8 +25,11 @@ namespace SaudeMenosDistante.Entities
             Tipo = tipo;
         }
 
-
-        
+        //MÉTODOS
+        public override string ToString()
+        {
+            return "Tipo de Equipamento: " + Tipo + " - " + Artigo + "\n" + "Quantidade: " + Quantidade;
+        }
 
 
     }
