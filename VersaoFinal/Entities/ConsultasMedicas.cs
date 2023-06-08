@@ -36,13 +36,13 @@ namespace SaudeMenosDistante.Entities
             
             if (Dosagem == null) //CONDIÇÃO CASO NÃO SE VERIFIQUE A NECESSIDADE DE PRESCRIÇÃO TERAPÊUTICA
             {
-                return "#MEDICINA" + "\n" + "ID: " + Id + "\n" + "Recomendação: " + Recomendacao;
+                return "#MEDICINA" + "\n" + "ID: " + Id + "\n" + "Recomendação: " + Recomendacao + "\n" + "-------------------" + "\n" + "\n" ;
             }
             else //CONDIÇÃO CASO SE VERIFIQUE NECESSIDADE DE PRESCRIÇÃO TERAPÊUTICA
             {
                 return "#MEDICINA" + "\n" + "ID: " + Id + "\n" + "Recomendação: " + Recomendacao + "\n"
                 + "Dosagem: " + Dosagem + "\n"
-                + "Periodicidade: " + Periodicidade;
+                + "Periodicidade: " + Periodicidade + "\n" + "-------------------" + "\n" + "\n";
             }
            
 

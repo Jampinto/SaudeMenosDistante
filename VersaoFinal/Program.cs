@@ -722,7 +722,7 @@ namespace SaudeMenosDistante
                 Console.WriteLine("Deseja prescrever terapêutica(S/N)? ");
                 char resp = char.Parse(Console.ReadLine());
 
-                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS ÀS CONDIÇÕES DOS IFS
+                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS ÀS CONDIÇÕES DOS IFSp
                 if (resp == 'S' || resp == 's')
                 {
                     Console.WriteLine("Recomendação médica(exame/medicação): ");
