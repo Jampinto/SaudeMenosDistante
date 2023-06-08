@@ -111,7 +111,7 @@ namespace SaudeMenosDistante
             Console.WriteLine("----------------------------------");
             Console.WriteLine();
 
-            Funcionario funconline = new Funcionario();  // INSTANCIAÇÃO DE FUNCIONARIO PARA CRUZAR COM OS PARAMETROS DO LOGIN DE CADA FUNCIONARIO
+            Funcionario funconline = new Funcionario("admin", DateTime.Parse("05/06/2013"), "DGS", '0', "admin@smd.pt");  // INSTANCIAÇÃO DE FUNCIONARIO PARA CRUZAR COM OS PARAMETROS DO LOGIN DE CADA FUNCIONARIO
 
             bool terminar = false;  //VARIAVEL PARA TERMINAR O PROGRAMA
             bool loggedIn = false;  //VARIAVEL PARA TERMINAR LOGIN
@@ -131,7 +131,7 @@ namespace SaudeMenosDistante
                     Console.Write("Password: ");
                     string password = Console.ReadLine();
 
-                    funconline = listaFuncionarios.Find(x => x.ObterConta().ObterUsername() == username); //FIND UTILIZADO NA LISTA DE FUNCIONARIOS PARA OBTER O USERNAME DO FUNCIONARIO E OS DADOS DE REGISTO DE CONTA 
+                    funconline = listaFuncionarios.Find(x => x.ObterConta().ObterUsername() == username); //FIND UTILIZADO NA LISTA DE FUNCIONARIOS PARA OBTER O FUNCIONARIO ATRAVÉS USERNAME PELO O REGISTO DE CONTA 
 
                     if (funconline != null)
                     {
@@ -322,15 +322,22 @@ namespace SaudeMenosDistante
                 DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.WriteLine("Morada: ");
                 string morada = Console.ReadLine();
-                Console.WriteLine("Sexo (M/F): ");
-                char sexo = Char.Parse(Console.ReadLine());
-                if (sexo != 'm' && sexo != 'f' && sexo != 'M' && sexo != 'F')
+                
+                char sexo = '0';
+
+                while (true)
                 {
-                    Console.WriteLine("Resposta inválida");
-                }
-                else
-                {
-                    sexo = sexo;
+                    Console.WriteLine("Sexo (M/F): ");
+                    sexo = Char.Parse(Console.ReadLine());
+                    if (sexo != 'm' && sexo != 'f' && sexo != 'M' && sexo != 'F')
+                    {
+                        Console.WriteLine("Insira uma resposta válida!");
+                    }
+                    else
+                    {
+                        break;
+                    }
+
                 }
                 Console.WriteLine("Email: ");
                 string email = Console.ReadLine();
@@ -426,7 +433,7 @@ namespace SaudeMenosDistante
                     }
                     else
                     {
-                        listaEquipamentos[y].Quantidade -= x;  //INCREMENTAR QUANTIDADES
+                        listaEquipamentos[y].Quantidade -= x;  //REMOVER QUANTIDADES
                         break;
                     }
 
@@ -580,16 +587,23 @@ namespace SaudeMenosDistante
                 Console.WriteLine("Glicose(mg/dL): ");
                 int glicose = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Fumador(S/N): ");
-                char fumador = char.Parse(Console.ReadLine());
-                if (fumador != 'S' & fumador != 'N' & fumador != 's' & fumador != 'n')  //CONDIÇÃO PARA LIMITAR RESPOSTA POR PARTE DO UTILIZADOR
+                char fumador = '0';
+
+                while (true)
                 {
-                    Console.WriteLine("Resposta inválida");
+                    Console.WriteLine("Fumador(S/N): ");
+                    fumador = char.Parse(Console.ReadLine());
+                    if (fumador != 'S' && fumador != 'N' && fumador != 's' && fumador != 'n')
+                    {
+                        Console.WriteLine("Insira uma resposta válida!");
+                    }
+                    else
+                    {
+                        break;
+                    }
+
                 }
-                else
-                {
-                    fumador = fumador;
-                }
+
                 Console.WriteLine("Colesterol(mg/dL): ");
                 int colesterol = int.Parse(Console.ReadLine());
 
@@ -637,7 +651,8 @@ namespace SaudeMenosDistante
 
                 }
                 Console.WriteLine();
-                Console.WriteLine("Consulta inserida!");
+                Console.WriteLine("CONSULTA INSERIDA!");
+                Console.WriteLine();
 
             }
 
@@ -704,13 +719,13 @@ namespace SaudeMenosDistante
                 EstadoConsulta estado = Enum.Parse<EstadoConsulta>("Médico");
                 Console.WriteLine(estado);
                 Console.WriteLine();
-                Console.WriteLine("Deseja realizar prescrição terapêutica(S/N) ? ");
+                Console.WriteLine("Deseja prescrever terapêutica(S/N)? ");
                 char resp = char.Parse(Console.ReadLine());
 
-                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS À VARIAVEL char resp
+                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS ÀS CONDIÇÕES DOS IFS
                 if (resp == 'S' || resp == 's')
                 {
-                    Console.WriteLine("Nome do medicamento: ");
+                    Console.WriteLine("Recomendação médica(exame/medicação): ");
                     string medicamento = Console.ReadLine();
                     Console.WriteLine("Dosagem: ");
                     string dose = (Console.ReadLine());
@@ -722,7 +737,7 @@ namespace SaudeMenosDistante
                 }
                 else
                 {
-                    Console.WriteLine("Recomendações: ");
+                    Console.WriteLine("Recomendação médica: ");
                     string recomendacao = Console.ReadLine();
                     int id = listaConsultas.ObterListaDeConsultas().Count();
                     ConsultasMedicas consulta = new ConsultasMedicas(id, recomendacao);

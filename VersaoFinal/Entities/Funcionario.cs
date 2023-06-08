@@ -18,9 +18,12 @@ namespace SaudeMenosDistante.Entities
 
 
         //CONSTRUTORES
-        public Funcionario()
+        public Funcionario(string nome, DateTime datanascimento, string morada, char sexo, string email)
+            : base(nome, datanascimento, morada, sexo, email)
         {
+
         }
+
 
         public Funcionario(string nome, DateTime datanascimento, string morada, char sexo, string email, string funcao, double vencimento, string equipa)
             : base(nome, datanascimento, morada, sexo, email)
