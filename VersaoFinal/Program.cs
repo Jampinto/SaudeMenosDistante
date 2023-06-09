@@ -75,7 +75,7 @@ namespace SaudeMenosDistante
             gestorDgs2.Registar("ges_02", "smd"); //LOGIN GESTOR DGS
 
 
-            
+
             // INTRODUÇÃO DADOS UTENTES
             Utente utente1 = new Utente("Diogo Coelho da Silva", DateTime.Parse("10/07/1990"), "Rua do Castro, Nº1", 'M', "diogo.exemplo1@exemplo.com", 123456789);
             Utente utente2 = new Utente("Tiago Santos Silva", DateTime.Parse("05/06/1980"), "Rua da Cintura, Nº2", 'M', "tiago.exemplo1@exemplo.com", 231456789);
@@ -104,7 +104,7 @@ namespace SaudeMenosDistante
             listaConsultas.Adicionar(consulta5);
             listaConsultas.Adicionar(consulta6);
             listaConsultas.Adicionar(consulta7);
-            
+
 
 
             Console.WriteLine("Bem-vindo ao Saúde Menos Distante");
@@ -322,7 +322,7 @@ namespace SaudeMenosDistante
                 DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.WriteLine("Morada: ");
                 string morada = Console.ReadLine();
-                
+
                 char sexo = '0';
 
                 while (true)
@@ -662,15 +662,13 @@ namespace SaudeMenosDistante
             {
                 foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
                 {
-
-                    Console.WriteLine(consulta);
-
-                }
-
-                foreach (ConsultaItens consulta in listaConsultasItens.ObterListaDeConsultasItens())
-                {
-
-                    Console.WriteLine(consulta);
+                    foreach (ConsultaItens consultaenf in listaConsultasItens.ObterListaDeConsultasItens())
+                    {
+                        if (consulta.Id == consultaenf.Id)
+                        {
+                            Console.WriteLine($" {consulta} \n {consultaenf}");
+                        }
+                    }
 
                 }
 
@@ -722,7 +720,7 @@ namespace SaudeMenosDistante
                 Console.WriteLine("Deseja prescrever terapêutica(S/N)? ");
                 char resp = char.Parse(Console.ReadLine());
 
-                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS ÀS CONDIÇÕES DOS IFSp
+                //DIFERENTES CONSTRUTORES PARA AS RESPOSTAS ÀS CONDIÇÕES DOS IFS
                 if (resp == 'S' || resp == 's')
                 {
                     Console.WriteLine("Recomendação médica(exame/medicação): ");
@@ -754,7 +752,6 @@ namespace SaudeMenosDistante
             //RELATORIO FINAL DO RASTREIO PRESENTE NO MENU DO MÉDICO
             void RelatorioRastreio()
             {
-                Console.WriteLine();
                 //CRUZAMENTO DOS "ids" DA LISTA DE CONSULTAS PRODUZIDAS PELO ADMINISTRATIVO
                 foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
                 {

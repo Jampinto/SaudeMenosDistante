@@ -28,7 +28,7 @@ namespace SaudeMenosDistante.Entities
         public override string ToString()
         {
 
-            return "\n" + "\n" + "-------------------" + "\n" + "#UTENTE" + "\n" + "#UTENTE" + "\n" + "ID: " + Id + "\n" + "Nome: " + Utente.Nome + "\n" + "Data de Nascimento: " + Utente.DataNascimento.ToString("dd/MM/yyyy") + "\n" + "Sexo: " + Utente.Sexo + "\n" + "N. utente: " + Utente.Nutente + 
+            return "\n" + "\n" + "-------------------" + "\n" + " #UTENTE" + "\n" + "ID: " + Id + "\n" + "Nome: " + Utente.Nome + "\n" + "Data de Nascimento: " + Utente.DataNascimento.ToString("dd/MM/yyyy") + "\n" + "Sexo: " + Utente.Sexo + "\n" + "N. utente: " + Utente.Nutente + 
                 "\n" +"Data da Consulta: " + Moment.ToString("dd/MM/yyyy hh:mm:ss");
         }
 
@@ -39,19 +39,7 @@ namespace SaudeMenosDistante.Entities
 
 
 
-
-        /* public override string ToString()
-         {
-
-             return "Order moment: " + Moment.ToString("dd/MM/yyyy HH:mm:ss") +
-                 " \n Order status: " + Status +
-                 " \n Client:" + Client +
-                 "\n Order Itens: " + Items+
-                 "\n Total Price: " + Total().ToString("F2", CultureInfo.InvariantCulture)
-                 ;
-
-         }
-        */
+  
 
 
 
