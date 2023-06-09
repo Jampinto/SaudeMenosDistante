@@ -75,7 +75,7 @@ namespace SaudeMenosDistante
             gestorDgs2.Registar("ges_02", "smd"); //LOGIN GESTOR DGS
 
 
-            /*
+            
             // INTRODUÇÃO DADOS UTENTES
             Utente utente1 = new Utente("Diogo Coelho da Silva", DateTime.Parse("10/07/1990"), "Rua do Castro, Nº1", 'M', "diogo.exemplo1@exemplo.com", 123456789);
             Utente utente2 = new Utente("Tiago Santos Silva", DateTime.Parse("05/06/1980"), "Rua da Cintura, Nº2", 'M', "tiago.exemplo1@exemplo.com", 231456789);
@@ -93,10 +93,10 @@ namespace SaudeMenosDistante
             Consulta consulta1 = new Consulta(1, DateTime.Parse("01/06/2023"), EstadoConsulta.Entrada, utente1);
             Consulta consulta2 = new Consulta(2, DateTime.Parse("02/06/2023"), EstadoConsulta.Entrada, utente2);
             Consulta consulta3 = new Consulta(3, DateTime.Parse("03/06/2023"), EstadoConsulta.Entrada, utente3);
-            Consulta consulta4 = new Consulta(3, DateTime.Parse("04/06/2023"), EstadoConsulta.Entrada, utente3);
-            Consulta consulta5 = new Consulta(4, DateTime.Parse("05/06/2023"), EstadoConsulta.Entrada, utente4);
-            Consulta consulta6 = new Consulta(5, DateTime.Parse("05/06/2023"), EstadoConsulta.Entrada, utente5);
-            Consulta consulta7 = new Consulta(1, DateTime.Parse("01/05/2023"), EstadoConsulta.Entrada, utente1);
+            Consulta consulta4 = new Consulta(4, DateTime.Parse("04/06/2023"), EstadoConsulta.Entrada, utente3);
+            Consulta consulta5 = new Consulta(5, DateTime.Parse("05/06/2023"), EstadoConsulta.Entrada, utente4);
+            Consulta consulta6 = new Consulta(6, DateTime.Parse("05/06/2023"), EstadoConsulta.Entrada, utente5);
+            Consulta consulta7 = new Consulta(7, DateTime.Parse("01/05/2023"), EstadoConsulta.Entrada, utente1);
             listaConsultas.Adicionar(consulta1);
             listaConsultas.Adicionar(consulta2);
             listaConsultas.Adicionar(consulta3);
@@ -104,7 +104,7 @@ namespace SaudeMenosDistante
             listaConsultas.Adicionar(consulta5);
             listaConsultas.Adicionar(consulta6);
             listaConsultas.Adicionar(consulta7);
-            */
+            
 
 
             Console.WriteLine("Bem-vindo ao Saúde Menos Distante");
@@ -362,7 +362,7 @@ namespace SaudeMenosDistante
                 int nutente = int.Parse(Console.ReadLine());
                 Utente utente = listaUtentes.obterListaDeutentes().Find(x => x.Nutente == nutente); //ATRAVÉS DA LIGAÇÃO AO UTENTE ANTERIORMENTE INSERIDO
                 int id = listaConsultas.ObterListaDeConsultas().Count();
-                Consulta consulta = new Consulta(id + 1, moment, estado, utente);  //INICIAÇÃO DA VARIÁVEL ID NA POSIÇÃO Nr. 1
+                Consulta consulta = new Consulta(id + 1, moment, estado, utente);  //ADICIONAR NOVO ID A CADA CONSULTA COM A FUNÇÃO COUNT - ID + 1
                 listaConsultas.Adicionar(consulta);
 
                 Console.WriteLine();
@@ -754,7 +754,7 @@ namespace SaudeMenosDistante
             //RELATORIO FINAL DO RASTREIO PRESENTE NO MENU DO MÉDICO
             void RelatorioRastreio()
             {
-                Console.WriteLine("RELATÓRIO DO RASTREIO");
+                Console.WriteLine();
                 //CRUZAMENTO DOS "ids" DA LISTA DE CONSULTAS PRODUZIDAS PELO ADMINISTRATIVO
                 foreach (Consulta consulta in listaConsultas.ObterListaDeConsultas())
                 {
@@ -766,7 +766,7 @@ namespace SaudeMenosDistante
                         {
                             if (consulta.Id == itens.Id && consulta.Id == consulmed.Id && itens.Id == consulmed.Id)
                             {
-                                Console.WriteLine($"Relatório do Rastreio: \n {consulta} \n {itens} \n {consulmed}");
+                                Console.WriteLine($"RELATÓRIO DO RASTREIO: \n {consulta} \n {itens} \n {consulmed}");
                             }
                         }
 

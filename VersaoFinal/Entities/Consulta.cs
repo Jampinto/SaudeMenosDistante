@@ -28,7 +28,7 @@ namespace SaudeMenosDistante.Entities
         public override string ToString()
         {
 
-            return "#UTENTE" + "\n" + "ID: " + Id + "\n" + "Nome: " + Utente.Nome + "\n" + "Data de Nascimento: " + Utente.DataNascimento.ToString("dd/MM/yyyy") + "\n" + "Sexo: " + Utente.Sexo + "\n" + "N. utente: " + Utente.Nutente + 
+            return "\n" + "\n" + "-------------------" + "\n" + "#UTENTE" + "\n" + "#UTENTE" + "\n" + "ID: " + Id + "\n" + "Nome: " + Utente.Nome + "\n" + "Data de Nascimento: " + Utente.DataNascimento.ToString("dd/MM/yyyy") + "\n" + "Sexo: " + Utente.Sexo + "\n" + "N. utente: " + Utente.Nutente + 
                 "\n" +"Data da Consulta: " + Moment.ToString("dd/MM/yyyy hh:mm:ss");
         }
 
